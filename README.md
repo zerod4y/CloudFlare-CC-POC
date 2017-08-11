@@ -14,7 +14,29 @@ CFIP=$(curl -v -I http://medium.com 2>&1 | egrep -o '\d+\.\d+\.\d+\.\d+' | head 
 curl -H "Host: myfakedomain.com" "http://${CFIP}/?nocache=`date +%s`"
 ```
 
+When the client receive an update, it decrypt the response_body and execute the command. Then it encrypt the command output and send it back to the C&C. The bash script uses OpenSSL to encrypt and decrypt.
+
 ![hiw](http://i.imgur.com/hYzqMWx.png)
 
-
+Following, a screenshot that shows how the client requests appear sniffing the http traffic on the victim PC.
 ![ws](http://i.imgur.com/ilVKfgV.png)
+
+First, we have a CloudFlare IP `104.16.122.127` as a destination IP address:
+```bash
+$ whois 104.16.122.127
+...
+OrgName:        Cloudflare, Inc.
+OrgId:          CLOUD14
+Address:        101 Townsend Street
+City:           San Francisco
+StateProv:      CA
+PostalCode:     94107
+Country:        US
+RegDate:        2010-07-09
+Updated:        2017-02-17
+Comment:        All Cloudflare abuse reporting can be done via https://www.cloudflare.com/abuse
+Ref:            https://whois.arin.net/rest/org/CLOUD14
+...
+```
+
+Then we see a POST request to `corriere.it` hostname (an italian daily newspaper), and in the request body we have the encrypted `ls -lart /tmp/` output.
