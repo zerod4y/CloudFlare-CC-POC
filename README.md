@@ -43,6 +43,6 @@ Ref:            https://whois.arin.net/rest/org/CLOUD14
 Then we see a POST request to `corriere.it` hostname (an italian daily newspaper), and in the request body we have the encrypted `ls -lart /tmp/` output.
 
 ## Info
-What "Domain Fronting" is: https://en.wikipedia.org/wiki/Domain_fronting
-CloudFlare Domain Fronting: https://medium.com/@themiddleblue/cloudflare-domain-fronting-an-easy-way-to-reach-and-hide-a-malware-c-c-786255f0f437
-theMiddle @twitter: https://twitter.com/Menin_TheMiddle
+What "Domain Fronting" is: https://en.wikipedia.org/wiki/Domain_fronting <br>
+CloudFlare Domain Fronting: https://medium.com/@themiddleblue/cloudflare-domain-fronting-an-easy-way-to-reach-and-hide-a-malware-c-c-786255f0f437 <br>
+theMiddle @twitter: https://twitter.com/Menin_TheMiddle <br>
