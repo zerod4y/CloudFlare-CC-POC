@@ -3,7 +3,7 @@ Before to start, let me say that I'm not a super expert on how to write a C&C cl
 
 ![](http://i.imgur.com/ZTsKokU.gif)
 
-### How it work
+## How it work
 The client, on the "Victim" PC, is a bash script that uses cURL to connect to CloudFlare and OpenSSL to encrypt all communications from and to CloudFlare/C&C. It simply make 2 HTTP request each *n* seconds: The first one, in order to discover a CloudFlare IP address, try to connect to a "real" CloudFlare website. The second one, make a fake request to CloudFlare to reach our C&C.
 
 ```bash
@@ -18,6 +18,7 @@ When the client receive an update, it decrypt the response_body and execute the 
 
 ![hiw](http://i.imgur.com/hYzqMWx.png)
 
+## A dump of the client request
 Following, a screenshot that shows how the client requests appear sniffing the http traffic on the victim PC.
 ![ws](http://i.imgur.com/ilVKfgV.png)
 
@@ -40,3 +41,8 @@ Ref:            https://whois.arin.net/rest/org/CLOUD14
 ```
 
 Then we see a POST request to `corriere.it` hostname (an italian daily newspaper), and in the request body we have the encrypted `ls -lart /tmp/` output.
+
+## Info
+What "Domain Fronting" is: https://en.wikipedia.org/wiki/Domain_fronting
+CloudFlare Domain Fronting: https://medium.com/@themiddleblue/cloudflare-domain-fronting-an-easy-way-to-reach-and-hide-a-malware-c-c-786255f0f437
+theMiddle @twitter: https://twitter.com/Menin_TheMiddle
